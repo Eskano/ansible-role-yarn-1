@@ -1,0 +1,13 @@
+---
+  - name: Add Yarn repository
+    apt_key:
+      keyserver: pgp.mit.edu
+      id: D101F7899D41F3C3
+      state: present
+    apt_repository:
+      repo: 'deb http://dl.yarnpkg.com/debian/ stable main'
+      state: present
+
+  - name: Install yarn
+    package: name=yarn={{yarn_version}} state=present update_cache=yes
+    become: yes
